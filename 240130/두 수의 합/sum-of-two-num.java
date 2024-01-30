@@ -15,7 +15,7 @@ public class Main {
         Map<Integer, List<Integer>> map = new HashMap<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            List<Integer> indexList = map.getOrDefault(numbers[i], new ArrayList<>());
+            List<Integer> indexList = map.getOrDefault(numbers[0], new ArrayList<>());
             indexList.add(i);
             map.put(numbers[i], indexList);
         }
@@ -28,7 +28,7 @@ public class Main {
 
             if (map.containsKey(findNumber)) {
                 int index = i;
-                result += (int) map.get(findNumber).stream().filter(value -> value > index).count();
+                result += (int) map.get(findNumber).parallelStream().filter(value -> value > index).count();
             }
         }
 
