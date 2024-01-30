@@ -12,12 +12,12 @@ public class Main {
         String[] str = reader.readLine().split(" ");
         Integer[] numbers = Arrays.stream(reader.readLine().split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
 
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<Integer, Queue<Integer>> map = new HashMap<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            List<Integer> indexList = map.getOrDefault(numbers[i], new ArrayList<>());
-            indexList.add(i);
-            map.put(numbers[i], indexList);
+            Queue<Integer> queue = map.getOrDefault(numbers[i], new LinkedList<>());
+            queue.add(i);
+            map.put(numbers[i], queue);
         }
 
         int result = 0;
@@ -27,8 +27,13 @@ public class Main {
             int findNumber = k - numbers[i];
 
             if (map.containsKey(findNumber)) {
-                int index = i;
-                result += (int) map.get(findNumber).parallelStream().filter(value -> value > index).count();
+                Queue<Integer> queue = map.get(findNumber);
+
+                while (!queue.isEmpty() && queue.peek() <= i) {
+                    queue.poll();
+                }
+
+                result += queue.size();
             }
         }
 
