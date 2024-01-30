@@ -15,7 +15,7 @@ public class Main {
         Map<Integer, List<Integer>> map = new HashMap<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            List<Integer> indexList = map.getOrDefault(numbers[0], new ArrayList<>());
+            List<Integer> indexList = map.getOrDefault(numbers[i], new ArrayList<>());
             indexList.add(i);
             map.put(numbers[i], indexList);
         }
