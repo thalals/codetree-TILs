@@ -32,7 +32,7 @@ public class Main {
                 int findNumber = k - fistNumber - secondNumber;
 
                 if (map.containsKey(findNumber)) {
-                    Queue<Integer> queue = map.get(findNumber);
+                    Queue<Integer> queue = new LinkedList<>(map.get(findNumber));
 
                     while (!queue.isEmpty() && queue.peek() <= j) {
                         queue.poll();
