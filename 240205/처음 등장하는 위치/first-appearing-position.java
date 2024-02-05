@@ -8,16 +8,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        Map<String, Integer> treeMap = new TreeMap<>();
+        Map<Long, Integer> treeMap = new TreeMap<>();
 
         for (int i = 1; i <= n; i++) {
-            String key = sc.next();
+            long key = sc.nextLong();
             if (!treeMap.containsKey(key)) {
                 treeMap.put(key, i);
             }
         }
 
-        for (String key : treeMap.keySet()) {
+        for (long key : treeMap.keySet()) {
             System.out.println(key +" " +treeMap.get(key));
         }
     }
