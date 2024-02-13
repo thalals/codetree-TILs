@@ -43,8 +43,11 @@ public class Main {
             }
         }
 
+        StringBuffer stringBuffer = new StringBuffer();
         for (int i = 1; i < setArrays.length; i++) {
-            System.out.println(setArrays[i].size());
+            stringBuffer.append(setArrays[i].size()+"\n");
         }
+
+        System.out.println(stringBuffer.toString());
     }
 }
