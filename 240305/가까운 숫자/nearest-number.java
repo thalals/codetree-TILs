@@ -7,20 +7,20 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        TreeSet<Integer> treeSet = new TreeSet<>();
-        treeSet.add(0);
+        TreeSet<Long> treeSet = new TreeSet<>();
+        treeSet.add(0L);
 
-        int min = 100001;
+        long min = Long.MAX_VALUE;
         while (n-- > 0) {
-            int nextInt = sc.nextInt();
+            long nextInt = sc.nextLong();
             treeSet.add(nextInt);
 
-            Integer lower = treeSet.lower(nextInt);
+            Long lower = treeSet.lower(nextInt);
             if (lower != null) {
                 min = Math.min(min, nextInt - lower);
             }
 
-            Integer higher = treeSet.higher(nextInt);
+            Long higher = treeSet.higher(nextInt);
             if (higher != null) {
                 min = Math.min(min, higher - nextInt);
             }
