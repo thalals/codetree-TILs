@@ -39,6 +39,8 @@ public class Main {
                     }
                     lower = treeSet.lower(lower);
                 }
+                
+                treeSet.add(next);
             }
         }
 
