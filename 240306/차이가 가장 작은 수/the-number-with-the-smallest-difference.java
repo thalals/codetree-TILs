@@ -20,8 +20,7 @@ public class Main {
         Long lower = treeSet.lower(biggest);
 
         while (!treeSet.isEmpty()) {
-
-            if (lower == null) {
+            if (biggest < m || lower == null) {
                 break;
             }
 
