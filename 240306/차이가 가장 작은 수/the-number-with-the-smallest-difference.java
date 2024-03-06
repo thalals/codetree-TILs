@@ -12,29 +12,33 @@ public class Main {
 
         long result = Integer.MAX_VALUE;
 
+
         while (n-- > 0) {
-            treeSet.add(sc.nextLong());
-        }
-
-        Long biggest = treeSet.last();
-        Long lower = treeSet.lower(biggest);
-
-        while (!treeSet.isEmpty()) {
-            if (biggest < m || lower == null) {
-                break;
+            if (treeSet.isEmpty()) {
+                treeSet.add(sc.nextLong());
             }
+            else{
+                long next = sc.nextLong();
 
-            long mathResult = biggest - lower;
-            if (mathResult >= m) {
-                result = Math.min(result, mathResult);
+                //오른쪽
+                Long higher = treeSet.higher(next);
+                while (!Objects.isNull(higher)) {
+                    if (higher - next >= m) {
+                        result = Math.min(result, higher - next);
+                        break;
+                    }
+                    higher = treeSet.higher(higher);
+                }
 
-                biggest = treeSet.lower(treeSet.last());
-                treeSet.remove(treeSet.last());
-                lower = treeSet.lower(biggest);
-            }
-
-            if (mathResult < m) {
-                lower = treeSet.lower(lower);
+                //왼쪽
+                Long lower = treeSet.lower(next);
+                while (!Objects.isNull(lower)) {
+                    if (next - lower >= m) {
+                        result = Math.min(result, next - lower);
+                        break;
+                    }
+                    lower = treeSet.lower(lower);
+                }
             }
         }
 
