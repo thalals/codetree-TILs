@@ -7,7 +7,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
 
         while (n-- > 0) {
             String next = sc.next();
